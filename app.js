@@ -3,17 +3,14 @@ const path = require("path");
 const fs = require("fs");
 const index = require("./index");
 
-var dic = {};
-
 const server = http.createServer((req, res) => {
     console.log("Request: " + req.url);
-    console.log(dic);
     let contentType = "text/html";
 
     switch(req.url){
 
       case "/":
-        index(req, res, dic);
+        index(res);
         break;
   
       default:
