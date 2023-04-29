@@ -13,7 +13,6 @@ const server = http.createServer((req, res) => {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(200, { "Content-Type": "text/javascript" });
         fs.readFile(path.join(__dirname, 'translator.js'), (content) => {
-          res.write('alert("Ok");');
           res.end(content);
         });
         break;
