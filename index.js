@@ -18,6 +18,6 @@ module.exports = async(res, origin)=>{
         });
     }else{
         console.log(origin + ' tried to login');
-        res.end('alert("compra")');
+        res.end('');
     }
 }
