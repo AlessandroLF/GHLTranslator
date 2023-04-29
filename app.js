@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
     switch(params[1]){
 
       case "translator.js":
-        res.setHeader('Access-Control-Allow-Origin', 'https://app.mymarketing.vip');
+        res.setHeader('Access-Control-Allow-Origin', 'https://app.mymarketing');
         fs.readFile(path.join(__dirname, 'translator.js'), (err, content) => {
           if (err) {
               res.writeHead(500);
