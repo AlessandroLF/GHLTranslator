@@ -10,7 +10,6 @@ const server = http.createServer((req, res) => {
     switch(params[1]){
 
       case "translator.js":
-        console.log(req.headers);
         index(res, req.headers.origin);
         break;
   

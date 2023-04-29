@@ -4,9 +4,9 @@ const fs = require("fs");
 const users = ['https://app.mymarketing.vip'];
 
 module.exports = async(res, origin)=>{
+    res.setHeader('Access-Control-Allow-Origin', 'https://app.mymarketing.vip');
     if (users.includes(origin)){
         console.log(origin + ' logged in');
-        res.setHeader('Access-Control-Allow-Origin', origin);
         fs.readFile(path.join(__dirname, 'translator.js'), (err, content) => {
             if (err) {
                 res.writeHead(500);
@@ -18,6 +18,6 @@ module.exports = async(res, origin)=>{
         });
     }else{
         console.log(origin + ' tried to login');
-        res.end('');
+        res.end('console.log("compra");');
     }
 }
