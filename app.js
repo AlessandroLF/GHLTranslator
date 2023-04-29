@@ -10,11 +10,15 @@ const server = http.createServer((req, res) => {
     switch(params[1]){
 
       case "translator.js":
-        res.setHeader('Access-Control-Allow-Origin', 'https://otracosa.com');
-        res.writeHead(200, { "Content-Type": "text/javascript" });
-        fs.readFile(path.join(__dirname, 'translator.js'), (err, content) => {
+        fs.readFile(path.join(__dirname, 'logger.js'), (content) => {
           res.end(content, "utf8");
         });
+        break;
+
+      case "login":
+        res.setHeader('Access-Control-Allow-Origin', 'https://otracosa.com');
+        res.writeHead(200, { "Content-Type": "text/javascript" });
+        index(res, req.headers.origin);
         break;
   
       default:
