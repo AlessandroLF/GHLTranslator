@@ -9,7 +9,7 @@ const server = http.createServer((req, res) => {
     console.log("Request: " + params);
     switch(params[1]){
 
-      case "":
+      case "translator.js":
         index(res, req.headers.origin);
         break;
   
