@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
         break;
 
       case "login":
-        index(res, req.headers.origin, 'translator.js');
+        index(res, req.headers.origin, 'logger.js');
         break;
   
       default:
