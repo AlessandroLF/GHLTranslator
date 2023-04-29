@@ -20,7 +20,6 @@ const server = http.createServer((req, res) => {
 
       case "login":
         res.setHeader('Access-Control-Allow-Origin', '*');
-        res.writeHead(200, { "Content-Type": "text/javascript" });
         index(res, req.headers.origin);
         break;
   
