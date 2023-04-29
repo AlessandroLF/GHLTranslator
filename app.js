@@ -12,14 +12,12 @@ const server = http.createServer((req, res) => {
       case "translator.js":
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(200, { "Content-Type": "text/javascript" });
-        index(res, req.headers.origin);
         fs.readFile(path.join(__dirname, 'logger.js'), (content) => {
           res.end(content, "utf8");
         });
         break;
 
       case "login":
-        res.setHeader('Access-Control-Allow-Origin', '*');
         index(res, req.headers.origin);
         break;
   

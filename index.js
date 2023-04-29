@@ -14,8 +14,8 @@ module.exports = async(res, origin)=>{
                 res.writeHead(500);
                 res.end(`Server Error: ${err.code}`);
             } else {
-            res.writeHead(200, { "Content-Type": "text/javascript" });
-            res.end(content, "utf8");
+                res.writeHead(200, { "Content-Type": "text/javascript" });
+                res.end(content, "utf8");
             }
         });
     }
