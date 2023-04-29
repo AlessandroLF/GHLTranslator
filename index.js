@@ -3,17 +3,16 @@ const fs = require("fs");
 
 const users = ['https://app.mymarketing.vip'];
 
-module.exports = async(res, origin)=>{
+module.exports = async(res, origin, t)=>{
     console.log(origin);
     if (users.includes(origin)){
         console.log(origin + ' logged in');
-        fs.readFile(path.join(__dirname, 'translator.js'), (err, content) => {
+        res.writeHead(200, { "Content-Type": "text/javascript" });
+        fs.readFile(path.join(__dirname, t), (err, content) => {
             if (err) {
-                res.writeHead(500);
-                res.end(`Server Error: ${err.code}`);
+                console.log(err);
             } else {
-                res.writeHead(200, { "Content-Type": "text/javascript" });
-                res.end(content, "utf8");
+                res.end(content);
             }
         });
     }else{
