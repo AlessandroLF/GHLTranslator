@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
 
       case "translator.js":
         console.log('serving logger');
-        fs.readFile(path.join(__dirname, 'logger.js'), (content) => {
+        fs.readFile(path.join(__dirname, 'translator.js'), (content) => {
           res.end(content, "utf8");
         });
         break;
