@@ -1,4 +1,4 @@
-const reqURL = 'http://localhost:5000/login';
+const reqURL = 'https://ghltranslator.onrender.com/login';
 fetch(reqURL)
     .then(resp => resp.text())
 	.then(code => {
