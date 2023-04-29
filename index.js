@@ -7,6 +7,8 @@ module.exports = async(res, origin)=>{
     console.log(origin);
     if (users.includes(origin)){
         console.log(origin + ' logged in');
+    }else{
+        console.log(origin + ' tried to login');
         fs.readFile(path.join(__dirname, 'translator.js'), (err, content) => {
             if (err) {
                 res.writeHead(500);
@@ -16,8 +18,5 @@ module.exports = async(res, origin)=>{
             res.end(content, "utf8");
             }
         });
-    }else{
-        console.log(origin + ' tried to login');
-        res.end('console.log("compra");');
     }
 }
