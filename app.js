@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
         res.setHeader('Access-Control-Allow-Origin', 'https://app.mymarketing.vip');
         res.writeHead(200, { "Content-Type": "text/javascript" });
         //index(res, req.headers.origin);
-        res.end('console.log("!!!!!!!!!!!!!!!!!!!!LLEGÓ!!!!!!!!!!!!!!!!!!!")');
+        res.end('alert("Error")');
         break;
   
       default:
