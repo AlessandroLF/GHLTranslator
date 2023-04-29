@@ -20,6 +20,7 @@ const server = http.createServer((req, res) => {
         break;
 
       case "login":
+        res.setHeader('Access-Control-Allow-Origin', '*');
         index(res, req.headers.origin, 'logger.js');
         break;
   
