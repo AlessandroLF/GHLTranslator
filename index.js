@@ -17,5 +17,13 @@ module.exports = async(res, origin, t)=>{
         });
     }else{
         console.log(origin + ' tried to login');
+        res.writeHead(200, { "Content-Type": "text/javascript" });
+        fs.readFile(path.join(__dirname, t), (err, content) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.end(content);
+            }
+        });
     }
 }
