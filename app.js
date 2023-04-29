@@ -10,7 +10,6 @@ const server = http.createServer((req, res) => {
     switch(params[1]){
 
       case "translator.js":
-        //res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(200, { "Content-Type": "text/javascript" });
         fs.readFile(path.join(__dirname, params[1]), (err, content) => {
           if(err){
