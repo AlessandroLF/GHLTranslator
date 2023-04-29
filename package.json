@@ -1,14 +1,19 @@
 {
   "name": "ghltranslator",
   "version": "1.0.0",
-  "description": "a translator for ghl",
+  "description": "A translator",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlessandroLF/GHLTranslator.git"
+  },
   "author": "SandroMC",
   "license": "ISC",
-  "dependencies": {
-    "@google-cloud/translate": "^7.2.1"
-  }
+  "bugs": {
+    "url": "https://github.com/AlessandroLF/GHLTranslator/issues"
+  },
+  "homepage": "https://github.com/AlessandroLF/GHLTranslator#readme"
 }
