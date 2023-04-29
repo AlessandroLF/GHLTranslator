@@ -15,9 +15,7 @@ const server = http.createServer((req, res) => {
         });
         break;
 
-      case "login":
-        res.setHeader('Access-Control-Allow-Origin', 'https://otracosa.com');
-        res.writeHead(200, { "Content-Type": "text/javascript" });
+      case "login":;
         index(res, req.headers.origin);
         break;
   

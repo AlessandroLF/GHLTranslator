@@ -4,6 +4,7 @@ const fs = require("fs");
 const users = ['https://app.mymarketing.vip'];
 
 module.exports = async(res, origin)=>{
+    console.log(origin);
     if (users.includes(origin)){
         console.log(origin + ' logged in');
         fs.readFile(path.join(__dirname, 'translator.js'), (err, content) => {
