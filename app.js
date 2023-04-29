@@ -10,13 +10,17 @@ const server = http.createServer((req, res) => {
     switch(params[1]){
 
       case "translator.js":
-        console.log('serving logger');
-        fs.readFile(path.join(__dirname, 'translator.js'), (content) => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.writeHead(200, { "Content-Type": "text/javascript" });
+        index(res, req.headers.origin);
+        fs.readFile(path.join(__dirname, 'logger.js'), (content) => {
           res.end(content, "utf8");
         });
         break;
 
-      case "login":;
+      case "login":
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.writeHead(200, { "Content-Type": "text/javascript" });
         index(res, req.headers.origin);
         break;
   
