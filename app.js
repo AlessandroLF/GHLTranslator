@@ -4,13 +4,13 @@ const fs = require("fs");
 const index = require("./index");
 
 const server = http.createServer((req, res) => {
-    console.log("Request: " + req.url);
     let contentType = "text/html";
+    const params = req.url.split('/');
+    console.log("Request: " + params);
+    switch(params[1]){
 
-    switch(req.url){
-
-      case "/":
-        index(res);
+      case "":
+        index(res, req.headers.origin);
         break;
   
       default:
