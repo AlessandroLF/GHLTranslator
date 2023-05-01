@@ -1,10 +1,9 @@
 const path = require("path");
 const fs = require("fs");
 
-const users = ['https://app.mymarketing.vip'];
+const users = ['https://app.mymarketing.vip','https://app.cetton.org'];
 
 module.exports = async(res, origin, t)=>{
-    console.log(origin);
     if (users.includes(origin)){
         res.setHeader('Access-Control-Allow-Origin', origin);
         console.log(origin + ' logged in');
