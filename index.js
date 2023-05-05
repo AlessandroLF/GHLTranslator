@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 
-const users = ['https://app.mymarketing.vip','https://app.cetton.org'];
+const users = ['https://app.mymarketing.vip'];
 
 module.exports = async(res, origin, t)=>{
     if (users.includes(origin)){
