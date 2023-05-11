@@ -1,7 +1,8 @@
 .trnsbtn.h::after{
     color: grey;
-    position: relative;
-    right: .2vw;
+    position: absolute;
+    right: 1vw;
+    left: .8vw;
     content: 'Translate'
 } 
 
@@ -22,7 +23,7 @@
 .translatorList {
     width: 15vw;
     border-radius:15px;
-    position: relative;
+    position: absolute;
     flex-direction: column;
     background-color: black; 
     color: white; height: fit-content;

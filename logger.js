@@ -2001,19 +2001,13 @@ function addElem(){
         button.classList = 'trnsbtn';
         button.innerText = lan.toUpperCase();
         header.insertBefore(button, header.childNodes[1]);
-        var top = '5vh';
-        var left = '0';
-        var translate = 'translateX(0)';
+        var translate = 'translate(5vh, 0)';
         if(header.offsetWidth < header.offsetHeight){
             button.classList.add('h');
-            top = '-50%';
-            left = '12vw'
-            translate = 'translateY(50%)';
+            translate = 'translate(50% , 12vw)';
         }
         button.addEventListener('click', ()=>{
             const langlist = document.createElement('div');
-            langlist.style.left = left;
-            langlist.style.top = top;
             langlist.style.transform = translate;
             langlist.classList = 'translatorList';
             for(const lang in langs){
