@@ -2005,7 +2005,7 @@ function addElem(){
         var left = '0';
         if(header.offsetWidth < header.offsetHeight){
             button.classList.add('h');
-            top = '-' + 5 * (langs.length -2) + '%';
+            top = '-' + 5 * (langs.length - 3) + '%';
             left = '12vw'
         }
         button.addEventListener('click', ()=>{
