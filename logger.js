@@ -2003,16 +2003,18 @@ function addElem(){
         header.insertBefore(button, header.childNodes[1]);
         var top = '5vh';
         var left = '0';
+        var translate = '';
         if(header.offsetWidth < header.offsetHeight){
             button.classList.add('h');
-            top = '-' + 5 * (langs.length - 3) + '%';
+            top = '-50%';
             left = '12vw'
+            translate = 'translateY(50%)';
         }
         button.addEventListener('click', ()=>{
             const langlist = document.createElement('div');
-            langlist.style.top = '5vh';
             langlist.style.left = left;
             langlist.style.top = top;
+            langlist.style.transform = translate;
             langlist.classList = 'translatorList';
             for(const lang in langs){
                 if(langs[lang] != lan){
