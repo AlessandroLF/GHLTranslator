@@ -2003,7 +2003,7 @@ function addElem(){
         header.insertBefore(button, header.childNodes[1]);
         var top = '5vh';
         var left = '0';
-        var translate = '';
+        var translate = 'translateX(0)';
         if(header.offsetWidth < header.offsetHeight){
             button.classList.add('h');
             top = '-50%';

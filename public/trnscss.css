@@ -23,7 +23,7 @@
 .translatorList {
     width: 15vw;
     border-radius:15px;
-    position: absolute;
+    position: relative;
     flex-direction: column;
     background-color: black; 
     color: white; height: fit-content;
