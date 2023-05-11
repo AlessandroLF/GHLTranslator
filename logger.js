@@ -2004,7 +2004,7 @@ function addElem(){
         var translate = 'translate(5vh, 0)';
         if(header.offsetWidth < header.offsetHeight){
             button.classList.add('h');
-            translate = 'translate(50% , 12vw)';
+            translate = 'translate(-50% , 12vw)';
         }
         button.addEventListener('click', ()=>{
             const langlist = document.createElement('div');
