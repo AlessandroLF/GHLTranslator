@@ -1,8 +1,9 @@
 .trnsbtn.h::after{
     color: grey;
     position: absolute;
-    right: .2vw;
-    content: 'Translate';
+    right: 1vw;
+    left: .8vw;
+    content: 'Translate'
 } 
 
 .trnsbtn{
