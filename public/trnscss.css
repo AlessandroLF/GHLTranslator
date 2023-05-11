@@ -1,5 +1,5 @@
 .trnsbtn.h::after{
-    color: gray;
+    color: lightblue;
     position: absolute;
     right: 1vw;
     left: .8vw;
@@ -7,6 +7,9 @@
 } 
 
 .trnsbtn{
+    width: 35px;
+    height: 35px;
+    margin: 1px;
     font-weight: bold;
     background: black;
     color: white;

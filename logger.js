@@ -1973,27 +1973,61 @@ var txtDicInv = {
     "Nombre para tu carpeta": "Name for your folder"
 }
 
-var lan = 'En';
+var lan = 'en';
 
 function addElem(){
     const header = document.querySelector(".hl_header--controls");
     if(header == null){
         setTimeout(addElem, 500);
     }else {
+        const langs = {
+            'English': 'en',
+            'Spanish': 'es'/*,
+            'French': 'fr',
+            'German': 'de',
+            'Italian': 'it',
+            'Portuguese': 'pt',
+            'Russian': 'ru',
+            'Japanese': 'ja',
+            'Korean': 'ko',
+            'Dutch': 'nl',
+            'Swedish': 'sv'*/
+        }
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = 'https://ghltranslator.onrender.com/trnscss.css';
+        document.head.appendChild(link);
         const button = document.createElement("button");
-        button.classList = 'btn btn-circle btn-primary hl_header--copy-link flex items-center justify-center';
-        button.innerText = lan;
-        button.style.height = '35px';
-        button.style.width = '35px';
+        button.classList = 'trnsbtn';
+        button.innerText = lan.toUpperCase();
         header.insertBefore(button, header.childNodes[1]);
-        button.addEventListener('click', async()=>{
-        	if(lan == 'En'){
-            	lan = 'Es';
-            }else{
-            	lan = 'En';
+        var top = '5vh';
+        var left = '0';
+        if(header.offsetWidth < header.offsetHeight){
+            button.classList.add('h');
+            top = '-20%';
+            left = '12vw'
+        }
+        button.addEventListener('click', ()=>{
+            const langlist = document.createElement('div');
+            langlist.style.top = '5vh';
+            langlist.style.left = left;
+            langlist.style.top = top;
+            langlist.classList = 'translatorList';
+            for(const lang in langs){
+                if(langs[lang] != lan){
+                    let btt = document.createElement("div");
+                    btt.innerText = lang + ' ('+langs[lang]+')';
+                    btt.addEventListener('click', (event)=>{
+                        event.stopPropagation();
+                        lan = langs[lang];
+                        button.innerText = lan.toUpperCase();
+                        translate();
+                    });
+                    langlist.appendChild(btt);
+                }
             }
-        	button.innerText = lan;
-            translate();
+            button.appendChild(langlist);
         });
     }
 }
@@ -2005,11 +2039,11 @@ function translate(){
         const pat = /[@]/g;
         const pat2 = /[a-zA-Z]/g;
         let text = node.nodeValue.trim();
-        if(text != '' && !hasClassAncestor(node.parentNode) && (lan == 'Es' ? !txtDicInv[text] : !txtDic[text]) && !text.match(pat) && text.match(pat2)){
+        if(text != '' && !hasClassAncestor(node.parentNode) && (lan == 'es' ? !txtDicInv[text] : !txtDic[text]) && !text.match(pat) && text.match(pat2)){
             if(!txtDic[text] && !txtDicInv[text] && node.parentNode.nodeName != ('STYLE' || 'SCRIPT')){
                 console.log('Missing "' + text + '" from dictionary');
             }else{
-                node.nodeValue = (lan == 'Es' ? txtDic[text] : txtDicInv[text]);
+                node.nodeValue = (lan == 'es' ? txtDic[text] : txtDicInv[text]);
             }
         }
     }
@@ -2020,11 +2054,11 @@ function translate(){
         if( !txtDic[oldP] && !txtDicInv[oldP]){
             console.log('Missing "' + oldP + '" from dictionary')
         }else{
-            inputs[i].setAttribute('placeholder', lan == 'Es' ? txtDic[oldP] : txtDicInv[oldP]);
+            inputs[i].setAttribute('placeholder', lan == 'es' ? txtDic[oldP] : txtDicInv[oldP]);
         }
     }
 
-    lan == 'Es' ? setTimeout(translate, 1000) : null;
+    lan != 'en' ? setTimeout(translate, 1000) : null;
 }
 
 function hasClassAncestor(elem){
