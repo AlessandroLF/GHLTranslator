@@ -2001,14 +2001,14 @@ function addElem(){
         button.classList = 'trnsbtn';
         button.innerText = lan.toUpperCase();
         header.insertBefore(button, header.childNodes[1]);
-        var translate = 'translate(0, 5vh)';
+        var transform = 'translate(0, 5vh)';
         if(header.offsetWidth < header.offsetHeight){
             button.classList.add('h');
-            translate = 'translate(12vw, -80%)';
+            transform = 'translate(12vw, -80%)';
         }
         button.addEventListener('click', ()=>{
             const langlist = document.createElement('div');
-            langlist.style.transform = translate;
+            langlist.style.transform = transform;
             langlist.classList = 'translatorList';
             for(const lang in langs){
                 if(langs[lang] != lan){
