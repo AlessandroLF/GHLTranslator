@@ -1,5 +1,5 @@
 .trnsbtn.h::after{
-    color: lightblue;
+    color: grey;
     position: absolute;
     right: 1vw;
     left: .8vw;
@@ -17,7 +17,7 @@
 }
 
 .trnsbtn:hover{
-    box-shadow: 0 5px 3px grey;
+    box-shadow: 0 5px 3px rgb(146, 222, 247);
 }
 
 .translatorList {
