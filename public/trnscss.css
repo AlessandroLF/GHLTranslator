@@ -1,0 +1,38 @@
+.trnsbtn.h::after{
+    color: gray;
+    position: absolute;
+    right: 1vw;
+    left: .8vw;
+    content: 'Translate'
+} 
+
+.trnsbtn{
+    font-weight: bold;
+    background: black;
+    color: white;
+    border-radius: 50%;
+}
+
+.trnsbtn:hover{
+    box-shadow: 0 5px 3px grey;
+}
+
+.translatorList {
+    width: 15vw;
+    border-radius:15px;
+    position: absolute;
+    flex-direction: column;
+    background-color: black; 
+    color: white; height: fit-content;
+}
+
+.translatorList>div {
+    white-space: nowrap;
+    padding: 0 6px;
+    font-size: 16px;
+}
+
+.translatorList > div:hover{
+    background-color: #F4F4F4;
+    color: black;
+}
