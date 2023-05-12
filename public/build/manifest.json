@@ -1,7 +1,7 @@
 {
   "short_name": "GHLTranslaotr",
   "name": "Go High Level Translator",
-  "start_url": "./build/admin",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
