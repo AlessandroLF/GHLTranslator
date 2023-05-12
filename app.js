@@ -19,6 +19,18 @@ const server = http.createServer((req, res) => {
         });
       break;
 
+      case "adminlogin":
+        res.writeHead(200, { "Content-Type": "application/json" });
+        const login = {'res':'true'};
+        res.end(JSON.stringify(login));
+      break;
+
+      case "customersugnup":
+        res.writeHead(200, { "Content-Type": "application/json" });
+        const signup = {'res':'true'};
+        res.end(JSON.stringify(signup));
+      break;
+
       case "admin":
         fs.readFile(path.join(__dirname, 'public', 'build', 'index.html'), (err, content) => {
           if(err){
@@ -27,12 +39,6 @@ const server = http.createServer((req, res) => {
           res.writeHead(200, { "Content-Type": "text/html" });
           res.end(content);
         });
-      break;
-
-      case "adminlogin":
-        res.writeHead(200, { "Content-Type": "application/json" });
-        const login = {'res':'true'};
-        res.end(JSON.stringify(login));
       break;
 
       case "login":
