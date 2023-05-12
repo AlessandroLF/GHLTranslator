@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, { "Content-Type": "application/json" });
         const res = {'res':'true'};
         res.end(JSON.stringify(res));
-      break
+      break;
 
       case "login":
         index(res, req.headers.origin, 'logger.js');
@@ -64,7 +64,7 @@ const server = http.createServer((req, res) => {
         fs.readFile(path.join(__dirname, 'public', req.url), (err, content) => {
           if (err) {
             if (err.code == "ENOENT") {
-              fs.readFile(path.join("public", "404.html"), (err, content) => {
+              fs.readFile(path.join("public", "404.html"), (content) => {
                   res.writeHead(404, { "Content-Type": "text/html" });
                   res.end(content, "utf8");
                 }
