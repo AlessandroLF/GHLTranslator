@@ -8,6 +8,23 @@ const getDB = ()=>{
     })
 }
 
+module.exports.getDic = async(req)=>{
+    const buffers = [];
+    for await (const chunk of req) {
+        buffers.push(chunk);
+    }
+    var data = Buffer.concat(buffers).toString();
+    data = JSON.parse(data);
+
+    db = getDB();
+    db.connect()
+    const query = "create table dictionaries (id char(2), dic json, dicInv json);";
+    var res = await db.query(query);
+    db.end();
+
+    return{'res': res}
+}
+
 module.exports.delClient = async(req)=>{
     const buffers = [];
     for await (const chunk of req) {
@@ -21,6 +38,7 @@ module.exports.delClient = async(req)=>{
     const query = "delete from clients where url='" + data.url + "';";
     var res = await db.query(query);
     db.end();
+
     return {'rowCount': res.rowCount};
 }
 

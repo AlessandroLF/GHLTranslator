@@ -20,6 +20,16 @@ const server = http.createServer(async(req, res) => {
         });
       break;
 
+      case 'getDic':
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.writeHead(200, { "Content-Type": "application/json" });
+        let dic = {'err': 'bad credentials'};
+        if(await dbman.login(req)){
+          dic = await dbman.getDic(req);
+        }
+        res.end(JSON.stringify(resp));
+      break;
+
       case 'getClients':
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(200, { "Content-Type": "application/json" });
