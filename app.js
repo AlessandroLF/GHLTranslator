@@ -31,7 +31,8 @@ const server = http.createServer((req, res) => {
 
       case "adminlogin":
         res.writeHead(200, { "Content-Type": "application/json" });
-        res.end("{'res':'true'}");
+        const res = {'res':'true'};
+        res.end(JSON.stringify(res));
       break
 
       case "login":
