@@ -17,30 +17,45 @@ const server = http.createServer((req, res) => {
           }
           res.end(content);
         });
-        break;
+      break;
+
+      case "admin":
+        fs.readFile(path.join(__dirname, 'public', 'build', 'index.html'), (err, content) => {
+          if(err){
+            console.log(err);
+          }
+          res.writeHead(200, { "Content-Type": "text/html" });
+          res.end(content);
+        });
+      break;
+
+      case "adminlogin":
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end({'res':'true'});
+      break
 
       case "login":
         index(res, req.headers.origin, 'logger.js');
-        break;
+      break;
   
       default:
         let extname = path.extname(req.url);
         switch (extname) {
           case ".js":
             contentType = "text/javascript";
-            break;
+          break;
           case ".css":
             contentType = "text/css";
-            break;
+          break;
           case ".json":
             contentType = "application/json";
-            break;
+          break;
           case ".png":
             contentType = "image/png";
-            break;
+          break;
           case ".jpg":
             contentType = "image/jpg";
-            break;
+          break;
         }
   
         if (contentType == "text/html" && extname == "") req.url += ".html";
