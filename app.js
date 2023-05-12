@@ -31,8 +31,8 @@ const server = http.createServer((req, res) => {
 
       case "adminlogin":
         res.writeHead(200, { "Content-Type": "application/json" });
-        const res = {'res':'true'};
-        res.end(JSON.stringify(res));
+        const login = {'res':'true'};
+        res.end(JSON.stringify(login));
       break;
 
       case "login":
@@ -79,7 +79,7 @@ const server = http.createServer((req, res) => {
             res.end(content, "utf8");
           }
         });
-      
+      //default
     }
   });
   
