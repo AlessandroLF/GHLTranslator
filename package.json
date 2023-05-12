@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AlessandroLF/GHLTranslator/issues"
   },
-  "homepage": "https://github.com/AlessandroLF/GHLTranslator#readme"
+  "homepage": "https://github.com/AlessandroLF/GHLTranslator#readme",
+  "dependencies": {
+    "pg": "^8.10.0"
+  }
 }

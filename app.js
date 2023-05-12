@@ -2,8 +2,9 @@ const http = require("http");
 const path = require("path");
 const fs = require("fs");
 const index = require("./index");
+const dbman = require("./dbmanager");
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async(req, res) => {
     let contentType = "text/html";
     const params = req.url.split('/');
     console.log("Request: " + params);
@@ -19,15 +20,33 @@ const server = http.createServer((req, res) => {
         });
       break;
 
-      case "adminlogin":
+      case 'getClients':
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(200, { "Content-Type": "application/json" });
-        const login = {'res':'true'};
+        let resp = {'err': 'bad credentials'};
+        if(await dbman.login(req)){
+          resp = await dbman.getClients(req);
+        }
+        res.end(JSON.stringify(resp));
+      break;
+
+      case "adminlogin":
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.writeHead(200, { "Content-Type": "application/json" });
+        var bol =  await dbman.login(req);
+        console.log(bol);
+        var login = {'res':bol};
+        console.log('log: ' + JSON.stringify(login));
         res.end(JSON.stringify(login));
       break;
 
       case "customersugnup":
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(200, { "Content-Type": "application/json" });
-        const signup = {'res':'true'};
+        let signup = {'err': 'bad credentials'};
+        if(await dbman.login(req)){
+          signup = await dbman.signUpClient(req);
+        }
         res.end(JSON.stringify(signup));
       break;
 
