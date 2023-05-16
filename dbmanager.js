@@ -33,11 +33,28 @@ module.exports.clientLogin = async(req, res)=>{
     return arr.includes(req.headers.origin);
 }
 
+const readJsonFile = async(filePath) => {
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, 'utf8', (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          try {
+            resolve(data);
+          } catch (parseError) {
+            reject(parseError);
+          }
+        }
+      });
+    });
+}
+
 module.exports.getDic = async()=>{
-    const data = await fs.readFile(path.join(__dirname,  'translation.json'));
-    console.log(data);
-    const data2 = await fs.readFile(path.join(__dirname,  'translationInv.json'));
-    console.log(data2);
+
+    var data1 = await readJsonFile(path.join(__dirname,  'translation.json'));
+    var data2 = await readJsonFile(path.join(__dirname,  'translationInv.json'));
+
+    console.log(data1);
     db = getDB();
     const query = "insert into dictionaries (id , dic , dicInv) values ('es', '" + data1 + "', '" + data2 + "' );";
     const res = await db.query(query);
