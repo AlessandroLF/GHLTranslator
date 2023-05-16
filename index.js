@@ -9,7 +9,7 @@ module.exports = async(res, origin, t)=>{
     const query = "select url from clients;";
     var res = await db.query(query);
     var users = [];
-    res.rows.array.forEach(row => {
+    res.rows.forEach(row => {
         users.push(row.url);
     });
     
