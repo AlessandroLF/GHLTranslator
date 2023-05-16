@@ -34,17 +34,9 @@ module.exports.clientLogin = async(req, res)=>{
 }
 
 module.exports.getDic = async()=>{
-    var buffers = [];
-    for await (const chunk of fs.readFile(path.join(__dirname,  'translation.json'))){
-        buffers.push(chunk);
-    }
-    var data = Buffer.concat(buffers).toString();
+    const data = await fs.readFile(path.join(__dirname,  'translation.json'));
     console.log(data);
-    var buffers = [];
-    for await (const chunk of fs.readFile(path.join(__dirname,  'translationInv.json'))){
-        buffers.push(chunk);
-    }
-    const data2 = Buffer.concat(buffers).toString();
+    const data2 = await fs.readFile(path.join(__dirname,  'translationInv.json'));
     console.log(data2);
     db = getDB();
     const query = "insert into dictionaries (id , dic , dicInv) values ('es', '" + data1 + "', '" + data2 + "' );";
