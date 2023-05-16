@@ -40,7 +40,8 @@ const readJsonFile = async(filePath) => {
           reject(error);
         } else {
           try {
-            resolve(data);
+            const re = JSON.parse(data)
+            resolve(re);
           } catch (parseError) {
             reject(parseError);
           }
@@ -53,16 +54,18 @@ module.exports.getDic = async()=>{
 
     var data1 = await readJsonFile(path.join(__dirname,  'translation.json'));
     var data2 = await readJsonFile(path.join(__dirname,  'translationInv.json'));
-
-    console.log(data1);
     db = getDB();
-    const query = "insert into dictionaries (id , dic , dicInv) values ('es', '" + data1 + "', '" + data2 + "' );";
-    const res = await db.query(query);
-    console.log(res);
-    db.end();
-    
+    const query = "insert into dictionaries (id , dic , dicInv) values ('es', '" + JSON.stringify(data1) + "', '" + JSON.stringify(data2) + "' );";
+    try{
+        const res = await db.query(query);
+        console.log(res);
 
-    return{'res': res}
+        return{'res': res}
+    }catch(e){
+        console.log(e);
+    }
+    
+    db.end();
 }
 
 module.exports.delClient = async(req)=>{
