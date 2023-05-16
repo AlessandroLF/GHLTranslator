@@ -1,9 +1,15 @@
 const path = require("path");
 const fs = require("fs");
-
-const users = ['https://app.mymarketing.vip'];
+const dbman = require("./dbmanager");
 
 module.exports = async(res, origin, t)=>{
+    
+    const db = dbman.getDB();
+    db.connect()
+    const query = "select url from clients;";
+    var res = await db.query(query);
+    const users = res.url;
+    
     if (users.includes(origin)){
         res.setHeader('Access-Control-Allow-Origin', origin);
         console.log(origin + ' logged in');
@@ -20,4 +26,5 @@ module.exports = async(res, origin, t)=>{
         res.writeHead(200, { "Content-Type": "text/javascript" });
         res.end('console.log("Error")');
     }
+    db.end();
 }

@@ -1,7 +1,8 @@
 const {Client} = require('pg')
 
 const dburl = 'postgres://sandromclombardo:wkf6YfXtz40ixlhMvWd6esUySfYRTzBO@dpg-cg81l8l269vf27e3i4eg-a.oregon-postgres.render.com/gohighwhatsdbmaster';
-const getDB = ()=>{
+
+module.exports.getDB = ()=>{
     return new Client({
         connectionString: dburl,
         ssl:{rejectUnauthorized: true}
@@ -9,16 +10,9 @@ const getDB = ()=>{
 }
 
 module.exports.getDic = async(req)=>{
-    const buffers = [];
-    for await (const chunk of req) {
-        buffers.push(chunk);
-    }
-    var data = Buffer.concat(buffers).toString();
-    data = JSON.parse(data);
-
     db = getDB();
     db.connect()
-    const query = "create table dictionaries (id char(2), dic json, dicInv json);";
+    const query = "insert into dictionaries (id char(2), dic json, dicInv json);";
     var res = await db.query(query);
     db.end();
 

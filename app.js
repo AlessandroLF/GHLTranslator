@@ -27,7 +27,7 @@ const server = http.createServer(async(req, res) => {
         if(await dbman.login(req)){
           dic = await dbman.getDic(req);
         }
-        res.end(JSON.stringify(resp));
+        res.end(JSON.stringify(dic));
       break;
 
       case 'getClients':
