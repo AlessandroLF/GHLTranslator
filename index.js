@@ -8,7 +8,7 @@ module.exports = async(res, origin, t)=>{
     db.connect()
     const query = "select url from clients;";
     var res = await db.query(query);
-    res = await res.json();
+    console.log(res);
     const users = res.url;
     
     if (users.includes(origin)){
