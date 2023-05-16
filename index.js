@@ -8,8 +8,10 @@ module.exports = async(res, origin, t)=>{
     db.connect()
     const query = "select url from clients;";
     var res = await db.query(query);
-    console.log(res);
-    const users = res.url;
+    var users = [];
+    res.rows.array.forEach(row => {
+        users.push(row.url);
+    });
     
     if (users.includes(origin)){
         res.setHeader('Access-Control-Allow-Origin', origin);
