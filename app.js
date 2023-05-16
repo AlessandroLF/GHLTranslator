@@ -20,6 +20,12 @@ const server = http.createServer(async(req, res) => {
         });
       break;
 
+      case 'getDics':
+        if(dbman.clientLogin(req , res)){
+          
+        }
+      break;
+
       case 'getDic':
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.writeHead(200, { "Content-Type": "application/json" });
@@ -71,7 +77,17 @@ const server = http.createServer(async(req, res) => {
       break;
 
       case "login":
-        index(res, req.headers.origin, 'logger.js');
+        if(dbman.clientLogin(req , res)){
+          res.writeHead(200, { "Content-Type": "text/javascript" });
+          const t = 'logger.js';
+          fs.readFile(path.join(__dirname, t), (err, content) => {
+              if (err) {
+                  console.log(err);
+              } else {
+                  res.end(content);
+              }
+          });
+        }
       break;
   
       default:

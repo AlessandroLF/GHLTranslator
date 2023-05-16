@@ -1,20 +1,50 @@
 const {Client} = require('pg')
+const fs = require('fs')
 
 const dburl = 'postgres://sandromclombardo:wkf6YfXtz40ixlhMvWd6esUySfYRTzBO@dpg-cg81l8l269vf27e3i4eg-a.oregon-postgres.render.com/gohighwhatsdbmaster';
 
-module.exports.getDB = ()=>{
-    return new Client({
+const getDB = ()=>{
+    const db = new Client({
         connectionString: dburl,
         ssl:{rejectUnauthorized: true}
-    })
+    });
+    db.connect();
+    return  db;
 }
 
-module.exports.getDic = async(req)=>{
-    db = getDB();
-    db.connect()
-    const query = "insert into dictionaries (id char(2), dic json, dicInv json);";
-    var res = await db.query(query);
+
+
+module.exports.clientLogin = async(req, res){
+    const db = dbman.getDB();
+    const query = "select url from clients;";
+    var users = await db.query(query);
+    var arr = [];
+    users.rows.forEach(row => {
+        arr.push(row.url);
+    });
+    if(arr.includes(req.headers.origin)){
+        console.log(origin + ' logged in');
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }else{
+        res.setHeader('Access-Control-Allow-Origin','');
+        console.log(origin + ' tried to login');
+        res.writeHead(200, { "Content-Type": "text/javascript" });
+        res.end('console.log("Error")');
+    }
+    
     db.end();
+    return arr.includes(req.headers.origin);
+}
+
+module.exports.getDic = async()=>{
+    fs.readFile(path.join(__dirname,  'translation.json'), (err, content) => {
+        db = getDB();
+        const query = "insert into dictionaries (id , dic , dicInv) values ('es', '" + content + "');";
+        var res = await db.query(query);
+        console.log(res);
+        db.end();
+    });
+    
 
     return{'res': res}
 }
@@ -28,7 +58,6 @@ module.exports.delClient = async(req)=>{
     data = JSON.parse(data);
 
     db = getDB();
-    db.connect()
     const query = "delete from clients where url='" + data.url + "';";
     var res = await db.query(query);
     db.end();
@@ -38,7 +67,6 @@ module.exports.delClient = async(req)=>{
 
 module.exports.getClients = async()=>{
     db = getDB();
-    db.connect()
     const query = "select * from clients";
     var res = await db.query(query);
     db.end();
@@ -54,7 +82,6 @@ module.exports.signUpClient = async(req)=>{
     data = JSON.parse(data);
 
     db = getDB();
-    db.connect()
     const query = "insert into clients (url, type) values ('" + data.url + "', 1)";
     var res = await db.query(query);
     db.end();

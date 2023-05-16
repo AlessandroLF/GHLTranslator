@@ -1980,6 +1980,7 @@ function addElem(){
     if(header == null){
         setTimeout(addElem, 500);
     }else {
+
         const langs = {
             'English': 'en',
             'Spanish': 'es'/*,
@@ -2014,11 +2015,20 @@ function addElem(){
                 if(langs[lang] != lan){
                     let btt = document.createElement("div");
                     btt.innerText = lang + ' ('+langs[lang]+')';
-                    btt.addEventListener('click', (event)=>{
+                    btt.addEventListener('click', async(event)=>{
                         event.stopPropagation();
                         lan = langs[lang];
+                        const cargaUtil = {
+                            'lan': lan
+                        }
+                        var reqURL = 'https://ghltranslator.onrender.com/trnscss.css/getDics';
+                        var dics = await fetch(reqURL, {
+                            method: 'POST',
+                            body: JSON.stringify(cargaUtil)
+                        });
+                        dics = await dics.json();
+                        translate(dics.dic, discs.dicInv);
                         button.innerText = lan.toUpperCase();
-                        translate();
                     });
                     langlist.appendChild(btt);
                 }
