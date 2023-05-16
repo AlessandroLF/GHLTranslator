@@ -52,8 +52,8 @@ const readJsonFile = async(filePath) => {
 
 module.exports.getDic = async()=>{
 
-    var data1 = await readJsonFile(path.join(__dirname,  'translation.json'));
-    var data2 = await readJsonFile(path.join(__dirname,  'translationInv.json'));
+    var data1 = await readJsonFile(path.join(__dirname,  'tstshortie.json'));
+    var data2 = await readJsonFile(path.join(__dirname,  'tstshortie.json'));
     db = getDB();
     const query = "insert into dictionaries (id , dic , dicInv) values ('es', '" + JSON.stringify(data1) + "', '" + JSON.stringify(data2) + "' );";
     try{
@@ -64,7 +64,7 @@ module.exports.getDic = async()=>{
     }catch(e){
         console.log(e);
     }
-    
+
     db.end();
 }
 
