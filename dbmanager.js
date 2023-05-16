@@ -14,7 +14,7 @@ const getDB = ()=>{
 
 
 
-module.exports.clientLogin = async(req, res){
+module.exports.clientLogin = async(req, res)=>{
     const db = getDB();
     const query = "select url from clients;";
     var users = await db.query(query);
