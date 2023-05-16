@@ -38,7 +38,7 @@ module.exports.clientLogin = async(req, res)=>{
 
 module.exports.getDic = async()=>{
     fs.readFile(path.join(__dirname,  'translation.json'), (err, content1) => {
-        fs.readFile(path.join(__dirname,  'translation.json'), (err, content2) => {
+        fs.readFile(path.join(__dirname,  'translation.json'), async(err, content2) => {
             db = getDB();
             const query = "insert into dictionaries (id , dic , dicInv) values ('es', '" + content1 + "', '" + content2 + "' );";
             var res = await db.query(query);
