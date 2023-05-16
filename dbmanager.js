@@ -15,7 +15,7 @@ const getDB = ()=>{
 
 
 module.exports.clientLogin = async(req, res){
-    const db = dbman.getDB();
+    const db = getDB();
     const query = "select url from clients;";
     var users = await db.query(query);
     var arr = [];
