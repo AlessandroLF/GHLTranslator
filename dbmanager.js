@@ -44,7 +44,7 @@ module.exports.getDic = async()=>{
             var res = await db.query(query);
             console.log(res);
             db.end();
-        }
+        });
     });
     
 
