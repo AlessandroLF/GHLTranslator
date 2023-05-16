@@ -12,8 +12,6 @@ const getDB = ()=>{
     return  db;
 }
 
-
-
 module.exports.clientLogin = async(req, res)=>{
     const db = getDB();
     const query = "select url from clients;";
@@ -28,8 +26,6 @@ module.exports.clientLogin = async(req, res)=>{
     }else{
         res.setHeader('Access-Control-Allow-Origin','');
         console.log(origin + ' tried to login');
-        res.writeHead(200, { "Content-Type": "text/javascript" });
-        res.end('console.log("Error")');
     }
     
     db.end();
