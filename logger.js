@@ -2001,7 +2001,7 @@ function addElem(){
         button.classList = 'trnsbtn';
         button.innerText = lan.toUpperCase();
         header.insertBefore(button, header.childNodes[1]);
-        var transform = 'translate(-5cw, 3vh)';
+        var transform = 'translate(-5vw, 5vh)';
         if(header.offsetWidth < header.offsetHeight){
             button.classList.add('h');
             transform = 'translate(12vw, -80%)';
