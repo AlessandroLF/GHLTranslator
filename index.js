@@ -7,9 +7,9 @@ module.exports = async(res, origin, t)=>{
     const db = dbman.getDB();
     db.connect()
     const query = "select url from clients;";
-    var res = await db.query(query);
+    var usrs = await db.query(query);
     var users = [];
-    res.rows.forEach(row => {
+    usrs.rows.forEach(row => {
         users.push(row.url);
     });
     
